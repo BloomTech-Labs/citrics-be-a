@@ -46,6 +46,11 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
+        <!-- Added from my Unit 4 backend project -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -100,6 +105,7 @@
             <version>2.3.6.RELEASE</version>
         </dependency>
 
+        <!-- This is new -->
         <dependency>
             <groupId>com.okta.spring</groupId>
             <artifactId>okta-spring-boot-starter</artifactId>
@@ -114,8 +120,9 @@
             <version>3.3.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- I'm missing lines 89 - 93 from my Unit 4 backend project here, but they may only be for testing -->
 
-<!--        Dependency for the shceduler-->
+<!--        Dependency for the scheduler-->
         <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
@@ -139,7 +146,7 @@
     </dependencies>
 
     <build>
-        <finalName>labs27-c-citrics-api</finalName>
+        <finalName>labs28-citrics-a-back</finalName>
 
         <plugins>
             <plugin>
