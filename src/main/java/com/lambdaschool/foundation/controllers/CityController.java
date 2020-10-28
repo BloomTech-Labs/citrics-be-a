@@ -33,13 +33,13 @@ public class CityController
      *  resources are available)
      * @return list of all cities
      */
-//    @GetMapping(value = "/all",
-//       produces = "application/json")
-//    public ResponseEntity<?> listAllCities()
-//    {
-//        List<City> cities = cityService.findAll();
-//        return  new ResponseEntity<>(cities, HttpStatus.OK);
-//    }
+    @GetMapping(value = "/all",
+       produces = "application/json")
+    public ResponseEntity<?> listAllCities()
+    {
+        List<City> cities = cityService.findAll();
+        return  new ResponseEntity<>(cities, HttpStatus.OK);
+    }
 
     /**
      * /city/{cityid} endpoint
