@@ -168,7 +168,7 @@ public class UserController
     /**
      * Updates the user record associated with the given id with the provided data. Only the provided fields are affected.
      * Roles are handled through different endpoints
-     * If an email list is given, it replaces the original emai list.
+     * If an email list is given, it replaces the original email list.
      * <br> Example: <a href="http://localhost:2019/users/user/7">http://localhost:2019/users/user/7</a>
      *
      * @param updateUser An object containing values for just the fields that are being updated. All other fields are left NULL.
