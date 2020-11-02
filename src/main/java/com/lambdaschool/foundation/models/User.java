@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * The entity allowing interaction with the users table
@@ -35,6 +37,11 @@ public class User
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value = "user", allowSetters = true)
     private List<UserCities> favcities = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonIgnoreProperties(value = "user",allowSetters = true)
+    private Set<UserCategories> categories = new HashSet<>();
 
     /**
      * Default constructor used primarily by the JPA.
@@ -109,6 +116,14 @@ public class User
     {
         this.favcities = favCities;
     }
+
+//    public List<Category> getUsercategories() {
+//        return usercategories;
+//    }
+//
+//    public void setUsercategories(List<Category> usercategories) {
+//        this.usercategories = usercategories;
+//    }
 
     /**
      * ToString override method
