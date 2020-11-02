@@ -26,7 +26,7 @@ A city metrics app to help find the perfect city for you!
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [<img src="https://avatars2.githubusercontent.com/u/60629070?s=460&u=a64a4131148a935013427e54f1ec8123937a53ce&v=4" width = "200" />](https://github.com/adonispuente) | [<img src="https://ca.slack-edge.com/ESZCHB482-W0143NLFNE7-9cd67f73c858-512" width = "200" />](https://github.com/CameronHonis) | [<img src="https://ca.slack-edge.com/ESZCHB482-W012HHM5QUD-0d0a44c93833-512" width = "200" />](https://github.com/numbers0580) |
 |                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/adonispuente)                                 |                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/CameronHonis)                                       |                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/numbers0580)                                       |
-|                     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/adonis-puente-701150183/)    |                    [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/cameron-honis-912a041ab/)                   |
+|                     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/adonis-puente/)    |                    [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/cameron-honis-912a041ab/)                   |
 
 <br>
 
@@ -88,31 +88,37 @@ See [Data Science Documentation](https://github.com/Lambda-School-Labs/Labs27-C-
 [Architecture Diagram](https://whimsical.com/4UKop3aqMB3KJRG2LXZzM6)
 
 Tables
-![backend-image](citrics-backend.png)
+![backend-image](citrics-new-be.png)
 
 ## Cities CRUD
 
 Method | Endpoint | Description | Required Data
 --- | --- | --- | ---
-POST | /cities/fav/:cityid | x | x
-GET | /cities/all | x |
-GET | /cities/:cityid | x |
-GET | /cities/allid | x |
-GET | /cities/avg | x |
+POST | /cities/fav/:cityid | Adds city to Users fav cities | `username`
+GET | /cities/all | List all cities |
+GET | /cities/city/:cityid | Get details for a city by it's ID |
+GET | /cities/allid | List of all city names and their ID's |
+GET | /cities/avg | Returns data for the city name: "National Average, USA" |
 
 ## Users CRUD
 
 Method | Endpoint | Description | Required Data
 --- | --- | --- | ---
-POST | /users/user | x | x
-GET | /users/users | x |
-GET | /users/:userid | x |
-GET | /users/user/name/:username | x |
-GET | /users/user/name/like/:username | x |
-GET | /users/getuserinfo | x |
-GET | /users/fav | x |
-PUT | /users/user/:userid | x | x
-PATCH | /users/user/:userid | x | x
-
+POST | /users/user | Add a new User | `User {username}`
+POST | /users/:userid/searches | Adds search info to Users history | array of Strings
+GET | /users/users | List all Users |
+GET | /users/:userid | Find User by ID |
+GET | /users/user/name/:username | Find User by username |
+GET | /users/user/name/like/:username | Finds all Users with substring in username |
+GET | /users/getuserinfo | Returns User by Authentication |
+GET | /users/favs | List current User's favorite cities |
+GET | /users/:userid/favcities | Get User's favorite cities |
+GET | /users/:userid/getsearches | List User's recent searches |
+GET | /users/:userid/getcategories | List User's Categories |
+PUT | /users/user/:userid | Update full User | `User`
+PATCH | /users/user/:userid | Update specific field in User | `username`
+PATCH | /users/:userid/category | Update specific category in User | pointer index
+DELETE | /users/user/:userid | Delete User by ID |
+DELETE | /users/:userid/removefavorites/:cityid | Deletes a city from User's favorites |
 
 
