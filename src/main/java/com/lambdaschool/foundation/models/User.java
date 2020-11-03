@@ -117,13 +117,16 @@ public class User
         this.favcities = favCities;
     }
 
-//    public List<Category> getUsercategories() {
-//        return usercategories;
-//    }
-//
-//    public void setUsercategories(List<Category> usercategories) {
-//        this.usercategories = usercategories;
-//    }
+    /*
+    Making every user have their own list of categories
+     */
+    public Set<UserCategories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<UserCategories> categories) {
+        this.categories = categories;
+    }
 
     /**
      * ToString override method
