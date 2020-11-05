@@ -117,6 +117,10 @@ public class User
         this.favcities = favCities;
     }
 
+    /*
+    Making every user have their own list of categories
+     */
+
     public Set<UserCategories> getCategories() {
         return categories;
     }
