@@ -2,6 +2,7 @@ package com.lambdaschool.foundation.services;
 
 import com.lambdaschool.foundation.exceptions.ResourceNotFoundException;
 import com.lambdaschool.foundation.models.User;
+import com.lambdaschool.foundation.models.UserCategories;
 import com.lambdaschool.foundation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,6 +93,12 @@ public class UserServiceImpl
 
         newUser.setUsername(user.getUsername()
             .toLowerCase());
+
+        newUser.getCategories().clear();
+        for (UserCategories uc: user.getCategories())
+        {
+            newUser.getCategories().add(new UserCategories(newUser, uc.getCategory()));
+        }
 
         return userrepos.save(newUser);
     }

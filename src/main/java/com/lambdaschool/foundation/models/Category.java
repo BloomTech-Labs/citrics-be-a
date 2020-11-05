@@ -24,7 +24,6 @@ public class Category extends Auditable {
 
 
 //Many to one with users
-//    @ManyToOne
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties(value = "category",allowSetters = true)
     private Set<UserCategories> users = new HashSet<>();
