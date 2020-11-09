@@ -77,25 +77,6 @@ public class CityServiceImpl implements CityService
             c.setCityid(city.getCityid());
         }
 
-        c.setCitynamestate(city.getCitynamestate());
-        c.setStatecode(city.getStatecode());
-        c.setTimezone(city.getTimezone());
-        c.setLatitude(city.getLatitude());
-        c.setLogitude(city.getLogitude());
-        c.setFpis(city.getFpis());
-        c.setGnis(city.getGnis());
-        c.setWikiimgurl(city.getWikiimgurl());
-        c.setWebsite(city.getWebsite());
-        c.setPopulation(city.getPopulation());
-        c.setDensitymisq(city.getDensitymisq());
-        c.setDensitykmsq(city.getDensitykmsq());
-        c.setAverageage(city.getAverageage());
-        c.setHouseholdincome(city.getHouseholdincome());
-        c.setIndividualincome(city.getIndividualincome());
-        c.setAveragehouse(city.getAveragehouse());
-        c.setRent(city.getRent());
-        c.setCostoflivingindex(city.getCostoflivingindex());
-        c.setAcastatus(city.getAcastatus());
 
 
 
@@ -107,10 +88,6 @@ public class CityServiceImpl implements CityService
                 .add(user);
 
         }
-
-        c.setAveragetemp(city.getAveragetemp());
-        c.setAverageperc(city.getAverageperc());
-        c.setAvgnewcovidcases(city.getAvgnewcovidcases());
 
         return cityrepo.save(c);
     }
@@ -152,7 +129,7 @@ public class CityServiceImpl implements CityService
         cityrepo.findAll()
             .iterator()
             .forEachRemaining((city) -> cities.add(new CityIdName(city.getCityid(),
-                city.getCitynamestate())));
+                city.getState())));
 
         return cities;
     }
@@ -189,42 +166,7 @@ public class CityServiceImpl implements CityService
             .iterator()
             .forEachRemaining(cities::add);
 
-        for (int i = 0; i < cities.size(); i++)
-        {
-            totalCities++;
-            City x = cities.get(i);
-            totalLatitude += x.getLatitude();
-            totalLongitude += x.getLogitude();
-            totalPopulation += x.getPopulation();
-            totalDensityMiSq += (c.getDensitymisq() != null) ? x.getDensitymisq() : 0;
-            totalDensityKmSq += (c.getDensitykmsq() != null) ? x.getDensitykmsq() : 0;
-            totalAge += x.getAverageage();
-            totalHousehold += x.getHouseholdincome();
-            totalIndividual += x.getIndividualincome();
-            totalHousing += x.getAveragehouse();
-            totalRent += x.getRent();
-            totalTemp += x.getAveragetemp();
-            totalPerc += x.getAverageperc();
-            totalCov += x.getAvgnewcovidcases();
 
-            costOfLivingIndex += (x.getCostoflivingindex() != null) ? x.getCostoflivingindex() : 0;
-        }
-
-        c.setCitynamestate(cityNameState);
-        c.setLatitude(totalLatitude / totalCities);
-        c.setLogitude(totalLongitude / totalCities);
-        c.setPopulation(totalPopulation / totalCities);
-        c.setDensitymisq(totalDensityMiSq / totalCities);
-        c.setDensitykmsq(totalDensityKmSq / totalCities);
-        c.setAverageage(totalAge / totalCities);
-        c.setHouseholdincome(totalHousehold / totalCities);
-        c.setIndividualincome(totalIndividual / totalCities);
-        c.setAveragehouse(totalHousing / totalCities);
-        c.setRent(totalRent / totalCities);
-        c.setCostoflivingindex(costOfLivingIndex / totalCities);
-        c.setAveragetemp(totalTemp / totalCities);
-        c.setAverageperc(totalPerc / totalCities);
-        c.setAvgnewcovidcases(totalCov / totalCities);
 
         return c;
     }
