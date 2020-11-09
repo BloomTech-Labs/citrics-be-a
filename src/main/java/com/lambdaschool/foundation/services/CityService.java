@@ -2,7 +2,6 @@ package com.lambdaschool.foundation.services;
 
 import com.lambdaschool.foundation.models.City;
 import com.lambdaschool.foundation.models.CityIdName;
-import com.lambdaschool.foundation.models.DSCity;
 import com.lambdaschool.foundation.models.User;
 
 import java.util.List;
@@ -34,7 +33,7 @@ public interface CityService
      * @param city new city to be saved
      * @return newly saved city
      */
-    City saveDs(DSCity city) throws Exception;
+//    City saveDs(DSCity city) throws Exception;
 
     /**
      * Finds city by citynamestate field

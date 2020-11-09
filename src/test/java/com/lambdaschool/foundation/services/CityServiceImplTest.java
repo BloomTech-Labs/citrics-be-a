@@ -3,7 +3,6 @@ package com.lambdaschool.foundation.services;
 import com.lambdaschool.foundation.config.H2ServerConfiguration;
 import com.lambdaschool.foundation.models.City;
 import com.lambdaschool.foundation.models.CityIdName;
-import com.lambdaschool.foundation.models.DSCity;
 import com.lambdaschool.foundation.repository.CityRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -138,32 +137,7 @@ class CityServiceImplTest
         assertSame(c1, c2);
     }
 
-    @Test
-    void saveDs() throws Exception
-    {
-        /**
-         * Mock up repository
-         * new dummy City to test
-         */
-        City c1 = new City("Test City 1, USA");
 
-        /**
-         * When Mockito calls the City Repository's saveDs method it reutrns
-         * the dummy new c1 object. Even though saveDs() takes a DSCity type as a
-         * you can pass in a blank object using the default constructor
-         */
-        Mockito.doReturn(c1).when(cityRepository).save(any());
-
-        /**
-         * Execute the service call
-         */
-        City c2 = cityService.saveDs(new DSCity());
-
-        /**
-         * Assert the expected results
-         */
-        assertEquals("Test City 1, USA", c2.getCitynamestate());
-    }
 
     @Test
     void findByName() throws Exception

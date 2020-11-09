@@ -12,7 +12,7 @@ public class RootController
         produces = "application/json")
     public ResponseEntity<?> sayHello()
     {
-        return new ResponseEntity<>("Hello From the Labs27 Citrics-C team! Please review documentation for valid endpoint.",
+        return new ResponseEntity<>("Hello From the Labs27 Citrics-C team, now the Labs28 Citrics A-Team! Please review documentation for valid endpoint.",
             HttpStatus.OK);
     }
 }
