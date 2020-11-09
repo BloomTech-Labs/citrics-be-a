@@ -45,6 +45,10 @@ public class City extends Auditable
 
     private String simple_climate;
 
+    private float walkscore;
+
+    private int population;
+
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties(value = "city", allowSetters = true)
     private List<CityOccs> occupations = new ArrayList<>();
@@ -174,4 +178,21 @@ public class City extends Auditable
     public void setOccupations(List<CityOccs> occupations) {
         this.occupations = occupations;
     }
+
+    public float getWalkscore() {
+        return walkscore;
+    }
+
+    public void setWalkscore(float walkscore) {
+        this.walkscore = walkscore;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
 }
