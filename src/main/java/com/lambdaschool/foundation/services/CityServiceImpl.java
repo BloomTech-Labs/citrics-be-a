@@ -92,6 +92,11 @@ public class CityServiceImpl implements CityService
         return cityrepo.save(c);
     }
 
+    @Override
+    public City findByCName(String name) {
+        return null;
+    }
+
     /**
      * Saves new city from DS API schema
      * Had to modify last minute to accept new city schema returned by DS
@@ -105,34 +110,34 @@ public class CityServiceImpl implements CityService
      * @param name citynamestate
      * @return city object match name or throws exception
      */
-    @Override
-    public City findByCName(String name)
-    {
-        City c = cityrepo.findByCitynamestate(name);
-        if (c == null)
-        {
-            throw new ResourceNotFoundException("City name " + name + " not found!");
-        }
-        return c;
-    }
+//    @Override
+//    public City findByCName(String name)
+//    {
+//        City c = cityrepo.findByCitynamestate(name);
+//        if (c == null)
+//        {
+//            throw new ResourceNotFoundException("City name " + name + " not found!");
+//        }
+//        return c;
+//    }
 
     /**
      * Find all cities and their name's + id's
      *
      * @return List of City name's and Id's
      */
-    @Override
-    public List<CityIdName> findAllIds()
-    {
-        List<CityIdName> cities = new ArrayList<>();
-
-        cityrepo.findAll()
-            .iterator()
-            .forEachRemaining((city) -> cities.add(new CityIdName(city.getCityid(),
-                city.getState())));
-
-        return cities;
-    }
+//    @Override
+//    public List<CityIdName> findAllIds()
+//    {
+//        List<CityIdName> cities = new ArrayList<>();
+//
+//        cityrepo.findAll()
+//            .iterator()
+//            .forEachRemaining((city) -> cities.add(new CityIdName(city.getCityid(),
+//                city.getState())));
+//
+//        return cities;
+//    }
 
     /**
      * Find the average value for all city fields

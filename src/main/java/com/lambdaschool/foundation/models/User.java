@@ -38,10 +38,12 @@ public class User
     @JsonIgnoreProperties(value = "user", allowSetters = true)
     private List<UserCities> favcities = new ArrayList<>();
 
+    private int categories;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
-    @JsonIgnoreProperties(value = "user",allowSetters = true)
-    private Set<UserCategories> categories = new HashSet<>();
+
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
+//    @JsonIgnoreProperties(value = "user",allowSetters = true)
+//    private Set<UserCategories> categories = new HashSet<>();
 
     /**
      * Default constructor used primarily by the JPA.
@@ -121,11 +123,11 @@ public class User
     Making every user have their own list of categories
      */
 
-    public Set<UserCategories> getCategories() {
+    public int getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<UserCategories> categories) {
+    public void setCategories(int categories) {
         this.categories = categories;
     }
 
