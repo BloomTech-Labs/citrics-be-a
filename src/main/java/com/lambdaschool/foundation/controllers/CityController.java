@@ -96,4 +96,12 @@ public class CityController
 
         return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
+
+    /* added a new controller to get a users favorite cities */
+    @GetMapping(value = "/favcities")
+    public ResponseEntity<?> getFavCity(Authentication authentication)
+    {
+        User u = userService.findByName(authentication.getName());
+        return new ResponseEntity<>(u.getFavcities(), HttpStatus.OK);
+    }
 }
