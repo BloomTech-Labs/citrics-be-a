@@ -1,9 +1,7 @@
 package com.lambdaschool.foundation.controllers;
 
 import com.lambdaschool.foundation.models.User;
-import com.lambdaschool.foundation.models.UserCategories;
 import com.lambdaschool.foundation.models.UserCities;
-import com.lambdaschool.foundation.services.UserCategoryService;
 import com.lambdaschool.foundation.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -32,8 +30,7 @@ public class UserController
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserCategoryService userCategoryService;
+
 
     /**
      * Returns a list of all users
@@ -246,11 +243,5 @@ public class UserController
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping(value ="/getcategories", produces = {"application/json"})
-    public ResponseEntity<?> getCategories(Authentication authentication)
-    {
-        User u = userService.findByName(authentication.getName());
-        Set<UserCategories> list = u.getCategories();
-        return new ResponseEntity<>(list,HttpStatus.OK);
-    }
+
 }

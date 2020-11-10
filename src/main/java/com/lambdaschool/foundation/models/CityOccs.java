@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 
 @Entity
+@IdClass(CityOccsId.class)
 @Table(name = "cityoccupations")
 public class CityOccs extends Auditable implements Serializable {
 

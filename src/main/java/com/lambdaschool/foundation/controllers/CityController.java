@@ -1,7 +1,7 @@
 package com.lambdaschool.foundation.controllers;
 
 import com.lambdaschool.foundation.models.City;
-import com.lambdaschool.foundation.models.CityIdName;
+//import com.lambdaschool.foundation.models.CityIdName;
 import com.lambdaschool.foundation.models.User;
 import com.lambdaschool.foundation.services.CityService;
 import com.lambdaschool.foundation.services.UserService;
@@ -57,13 +57,13 @@ public class CityController
      * /allid endpoint
      * @return list of all City name's and id's
      */
-    @GetMapping(value = "/allid", produces = "application/json")
-    public ResponseEntity<?> listAllCityIds()
-    {
-        List<CityIdName> myList = cityService.findAllIds();
-
-        return new ResponseEntity<>(myList, HttpStatus.OK);
-    }
+//    @GetMapping(value = "/allid", produces = "application/json")
+//    public ResponseEntity<?> listAllCityIds()
+//    {
+//        List<CityIdName> myList = cityService.findAllIds();
+//
+//        return new ResponseEntity<>(myList, HttpStatus.OK);
+//    }
 
     /**
      * /avg endpoint

@@ -2,7 +2,6 @@ package com.lambdaschool.foundation.controllers;
 
 
 import com.lambdaschool.foundation.models.City;
-import com.lambdaschool.foundation.services.CategoryService;
 import com.lambdaschool.foundation.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +19,6 @@ public class CategoryController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private CategoryService categoryService;
 
 
 
