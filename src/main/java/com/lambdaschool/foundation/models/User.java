@@ -120,6 +120,7 @@ public class User
     /*
     Making every user have their own list of categories
      */
+
     public Set<UserCategories> getCategories() {
         return categories;
     }
