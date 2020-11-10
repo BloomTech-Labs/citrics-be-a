@@ -44,7 +44,7 @@ public class SeedData implements CommandLineRunner {
         }
 
         for(String data : fetchArray) {
-            // String example = "{\"city\":\"New York\",\"state\":\"NY\",\"bedroom_size\":\"Studio\",\"price_2020_08\":1864}";
+            // String example = "{\"city\":\"New York\",\"state\":\"NY\"}";
 
             ObjectMapper mapper = new ObjectMapper();
             JsonNode node = mapper.readTree(data);
@@ -95,22 +95,22 @@ public class SeedData implements CommandLineRunner {
 
                 JsonNode cityName = dataNode.path("city");
                 JsonNode stateCode = dataNode.path("state");
-                JsonNode studioNode = dataNode.path("studio");
-                JsonNode oneBNode = dataNode.path("onebr");
-                JsonNode twoBNode = dataNode.path("twobr");
-                JsonNode threeBNode = dataNode.path("threebr");
-                JsonNode fourBNode = dataNode.path("fourbr");
-                JsonNode walkNode = dataNode.path("walkscore");
-                JsonNode popNode = dataNode.path("population");
-                JsonNode occNode = dataNode.path("occ_title");
-                JsonNode hourlyNode = dataNode.path("hourly_wage");
-                JsonNode annualNode = dataNode.path("annual_wage");
-                JsonNode climateNode = dataNode.path("climate_zone");
+                JsonNode studioPrice = dataNode.path("studio");
+                JsonNode oneBPrice = dataNode.path("onebr");
+                JsonNode twoBPrice = dataNode.path("twobr");
+                JsonNode threeBPrice = dataNode.path("threebr");
+                JsonNode fourBPrice = dataNode.path("fourbr");
+                JsonNode walkScore = dataNode.path("walkscore");
+                JsonNode popTotal = dataNode.path("population");
+                JsonNode occTitle = dataNode.path("occ_title");
+                JsonNode hourlyWage = dataNode.path("hourly_wage");
+                JsonNode annualWage = dataNode.path("annual_wage");
+                JsonNode climateZone = dataNode.path("climate_zone");
                 JsonNode simpleClimate = dataNode.path("simple_climate");
 
                 // Insert code on how you'd want to store this data to table. For now, I will use println
                 // Uncomment next line to display data for specified cities/states (Note: Apparently, not all cities in API have data)
-                // System.out.println(cityName.textValue() + ", " + stateCode.textValue() + ", Studio: " + studioNode.intValue() + ", Walkability: " + walkNode.floatValue() + ", Population: " + popNode.intValue());
+                System.out.println(cityName.textValue() + ", " + stateCode.textValue() + ", Studio: " + studioPrice.intValue() + ", Walkability: " + walkScore.floatValue() + ", Population: " + popTotal.intValue());
             }
             dataArray.clear();
         }
