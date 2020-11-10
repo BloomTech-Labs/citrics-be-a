@@ -6,7 +6,7 @@ public class UserCategoriesId implements Serializable {
 
     private long user;
 
-    private long categories;
+    private long category;
 
     public UserCategoriesId() {
     }
@@ -19,12 +19,8 @@ public class UserCategoriesId implements Serializable {
         this.user = user;
     }
 
-    public long getCategories() {
-        return categories;
-    }
-
-    public void setCategories(long categories) {
-        this.categories = categories;
+    public long getCategory() {
+        return category;
     }
 
     @Override
@@ -39,7 +35,7 @@ public class UserCategoriesId implements Serializable {
         }
         UserCategoriesId that = (UserCategoriesId) o;
         return user == that.user &&
-                categories == that.categories;
+                category == that.category;
     }
 
     @Override
