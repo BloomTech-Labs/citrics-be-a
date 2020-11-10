@@ -101,8 +101,7 @@ public class CityController
     @GetMapping(value = "/favcities")
     public ResponseEntity<?> getFavCity(Authentication authentication)
     {
-        User u = userService.findByName((authentication.getName()));
+        User u = userService.findByName(authentication.getName());
         return new ResponseEntity<>(u.getFavcities(), HttpStatus.OK);
-
     }
 }
