@@ -27,6 +27,7 @@ public class OktaAuthSecurityConfig extends WebSecurityConfigurerAdapter
                 "/swagger-resource/**",
                 "/swagger-ui.html",
                 "/v2/api-docs",
+                //this /cities  isnt doing anything for some reason
                 "/webjars/**","/cities/**")
             .permitAll()
             .antMatchers(HttpMethod.POST,
@@ -41,9 +42,9 @@ public class OktaAuthSecurityConfig extends WebSecurityConfigurerAdapter
             .permitAll()
             .antMatchers("/users/**",
                 "/oauth/revoke-token",
-                "/logout")
+                "/logout","/cities/**")
             .permitAll()
-            .antMatchers("/roles/**")
+            .antMatchers("/roles/**","/cities/**")
             .permitAll()
             .and()
             .exceptionHandling()
