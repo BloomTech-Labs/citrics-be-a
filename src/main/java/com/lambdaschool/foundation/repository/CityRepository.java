@@ -10,5 +10,5 @@ public interface CityRepository extends CrudRepository<City, Long>
      * @param cityname name of city
      * @return City matching cityname
      */
-    City findByCitynamestate(String cityname);
+//    City findByCitynamestate(String cityname);
 }

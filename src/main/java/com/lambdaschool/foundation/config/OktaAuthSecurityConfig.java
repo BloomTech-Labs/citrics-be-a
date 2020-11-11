@@ -27,11 +27,12 @@ public class OktaAuthSecurityConfig extends WebSecurityConfigurerAdapter
                 "/swagger-resource/**",
                 "/swagger-ui.html",
                 "/v2/api-docs",
-                "/webjars/**")
+                "/webjars/**","/cities/**")
             .permitAll()
             .antMatchers(HttpMethod.POST,
                 "/users/**")
             .permitAll()
+
             .antMatchers(HttpMethod.DELETE,
                 "/users/**")
             .permitAll()

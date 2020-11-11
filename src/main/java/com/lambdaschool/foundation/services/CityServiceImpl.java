@@ -68,28 +68,29 @@ public class CityServiceImpl implements CityService
     @Override
     public City save(City city)
     {
-        City c = new City();
+//        City c = new City();
 
-        if (city.getCityid() != 0)
-        {
-            cityrepo.findById(city.getCityid())
-                .orElseThrow(() -> new ResourceNotFoundException("City id " + city.getCityid() + " not found!"));
-            c.setCityid(city.getCityid());
-        }
+//        if (city.getCityid() != 0)
+//        {
+//            cityrepo.findById(city.getCityid())
+//                .orElseThrow(() -> new ResourceNotFoundException("City id " + city.getCityid() + " not found!"));
+//            c.setCityid(city.getCityid());
+//        }
+//
+//
+//        for (UserCities user : city.getUsers())
+//        {
+//            c.getUsers()
+//                .add(user);
+//
+//        }
 
+        return cityrepo.save(city);
+    }
 
-
-
-
-
-        for (UserCities user : city.getUsers())
-        {
-            c.getUsers()
-                .add(user);
-
-        }
-
-        return cityrepo.save(c);
+    @Override
+    public City findByCName(String name) {
+        return null;
     }
 
     /**
@@ -105,34 +106,34 @@ public class CityServiceImpl implements CityService
      * @param name citynamestate
      * @return city object match name or throws exception
      */
-    @Override
-    public City findByCName(String name)
-    {
-        City c = cityrepo.findByCitynamestate(name);
-        if (c == null)
-        {
-            throw new ResourceNotFoundException("City name " + name + " not found!");
-        }
-        return c;
-    }
+//    @Override
+//    public City findByCName(String name)
+//    {
+//        City c = cityrepo.findByCitynamestate(name);
+//        if (c == null)
+//        {
+//            throw new ResourceNotFoundException("City name " + name + " not found!");
+//        }
+//        return c;
+//    }
 
     /**
      * Find all cities and their name's + id's
      *
      * @return List of City name's and Id's
      */
-    @Override
-    public List<CityIdName> findAllIds()
-    {
-        List<CityIdName> cities = new ArrayList<>();
-
-        cityrepo.findAll()
-            .iterator()
-            .forEachRemaining((city) -> cities.add(new CityIdName(city.getCityid(),
-                city.getState())));
-
-        return cities;
-    }
+//    @Override
+//    public List<CityIdName> findAllIds()
+//    {
+//        List<CityIdName> cities = new ArrayList<>();
+//
+//        cityrepo.findAll()
+//            .iterator()
+//            .forEachRemaining((city) -> cities.add(new CityIdName(city.getCityid(),
+//                city.getState())));
+//
+//        return cities;
+//    }
 
     /**
      * Find the average value for all city fields
