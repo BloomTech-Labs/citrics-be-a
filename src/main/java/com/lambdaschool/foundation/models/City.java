@@ -15,10 +15,6 @@ import java.util.Set;
 @Table(name = "cities")
 public class City extends Auditable
 {
-
-    /**
-     * Generate City id
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cityid;
@@ -86,6 +82,7 @@ public class City extends Auditable
         this.population = population;
 
     }
+
 
     public String getName() {
         return name;

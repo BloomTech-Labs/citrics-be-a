@@ -27,7 +27,8 @@ public class OktaAuthSecurityConfig extends WebSecurityConfigurerAdapter
                 "/swagger-resource/**",
                 "/swagger-ui.html",
                 "/v2/api-docs",
-                //this /cities  isnt doing anything for some reason
+                //this /cities  isnt doing anything for some reason. I added /cities to two places because of a reddit thread I found that has a similar issues
+                    // not sure why it works, but it does.
                 "/webjars/**","/cities/**")
             .permitAll()
             .antMatchers(HttpMethod.POST,
@@ -40,6 +41,7 @@ public class OktaAuthSecurityConfig extends WebSecurityConfigurerAdapter
             .antMatchers(HttpMethod.PUT,
                 "/users/**")
             .permitAll()
+
             .antMatchers("/users/**",
                 "/oauth/revoke-token",
                 "/logout","/cities/**")
@@ -70,4 +72,5 @@ public class OktaAuthSecurityConfig extends WebSecurityConfigurerAdapter
             .frameOptions()
             .disable();
     }
+
 }
