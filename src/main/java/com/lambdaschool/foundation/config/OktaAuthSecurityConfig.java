@@ -41,9 +41,9 @@ public class OktaAuthSecurityConfig extends WebSecurityConfigurerAdapter
             .permitAll()
             .antMatchers("/users/**",
                 "/oauth/revoke-token",
-                "/logout")
+                "/logout","/cities/**")
             .permitAll()
-            .antMatchers("/roles/**")
+            .antMatchers("/roles/**","/cities/**")
             .permitAll()
             .and()
             .exceptionHandling()
