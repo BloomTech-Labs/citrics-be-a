@@ -57,8 +57,8 @@
 //            Exception
 //    {
 //        // URL of the API we are accessing
-//        // String requestURL = "http://citrics-ds-d.eba-mdwicj6m.us-east-1.elasticbeanstalk.com/";
-//        String requestURL = "http://26-citrics-a-ds.eba-tjpigfip.us-east-1.elasticbeanstalk.com/";
+//        String requestURL = "http://citrics-ds-d.eba-mdwicj6m.us-east-1.elasticbeanstalk.com/";
+//        // String requestURL = "http://26-citrics-a-ds.eba-tjpigfip.us-east-1.elasticbeanstalk.com/";
 //        // String requestURL = "http://citrics-ds.eba-jvvvymfn.us-east-1.elasticbeanstalk.com/";
 //        //        String requestURL = "https://labs27-c-citrics-api.herokuapp.com/cities/all";
 //        /*

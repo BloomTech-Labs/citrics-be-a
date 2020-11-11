@@ -31,6 +31,14 @@ public class Occupation {
     public Occupation() {
     }
 
+    public Occupation(String occ_title, double hourly_wage, int annual_wage, double jobs_1000, double loc_quotient) {
+        this.occ_title = occ_title;
+        this.hourly_wage = hourly_wage;
+        this.annual_wage = annual_wage;
+        this.jobs_1000 = jobs_1000;
+        this.loc_quotient = loc_quotient;
+    }
+
     public long getOccid() {
         return occid;
     }
