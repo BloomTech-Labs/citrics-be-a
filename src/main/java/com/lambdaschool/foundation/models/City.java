@@ -23,6 +23,8 @@ public class City extends Auditable
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cityid;
 
+    private String name;
+
     private String state;
 
     private int studio;
@@ -65,6 +67,32 @@ public class City extends Auditable
      */
     public City()
     {
+    }
+
+    public City(String name, String state, int studio, int onebr, int twobr, int threebr, int fourbr, String occ_title, Double hourly_wage, int annual_wage, String climate_zone, String simple_climate, float walkscore, int population) {
+        this.name = name;
+        this.state = state;
+        this.studio = studio;
+        this.onebr = onebr;
+        this.twobr = twobr;
+        this.threebr = threebr;
+        this.fourbr = fourbr;
+        this.occ_title = occ_title;
+        this.hourly_wage = hourly_wage;
+        this.annual_wage = annual_wage;
+        this.climate_zone = climate_zone;
+        this.simple_climate = simple_climate;
+        this.walkscore = walkscore;
+        this.population = population;
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getCityid() {
