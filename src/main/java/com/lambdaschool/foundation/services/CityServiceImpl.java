@@ -68,28 +68,24 @@ public class CityServiceImpl implements CityService
     @Override
     public City save(City city)
     {
-        City c = new City();
+//        City c = new City();
 
-        if (city.getCityid() != 0)
-        {
-            cityrepo.findById(city.getCityid())
-                .orElseThrow(() -> new ResourceNotFoundException("City id " + city.getCityid() + " not found!"));
-            c.setCityid(city.getCityid());
-        }
+//        if (city.getCityid() != 0)
+//        {
+//            cityrepo.findById(city.getCityid())
+//                .orElseThrow(() -> new ResourceNotFoundException("City id " + city.getCityid() + " not found!"));
+//            c.setCityid(city.getCityid());
+//        }
+//
+//
+//        for (UserCities user : city.getUsers())
+//        {
+//            c.getUsers()
+//                .add(user);
+//
+//        }
 
-
-
-
-
-
-        for (UserCities user : city.getUsers())
-        {
-            c.getUsers()
-                .add(user);
-
-        }
-
-        return cityrepo.save(c);
+        return cityrepo.save(city);
     }
 
     @Override

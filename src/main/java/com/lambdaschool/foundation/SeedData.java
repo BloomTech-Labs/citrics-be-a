@@ -2,6 +2,12 @@ package com.lambdaschool.foundation;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lambdaschool.foundation.models.City;
+import com.lambdaschool.foundation.models.CityOccs;
+import com.lambdaschool.foundation.models.UserCities;
+import com.lambdaschool.foundation.repository.CityRepository;
+import com.lambdaschool.foundation.services.CityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +23,11 @@ import java.util.List;
 @Transactional
 @Component
 public class SeedData implements CommandLineRunner {
+    @Autowired
+    CityService cityService;
+
+    @Transactional
+    @Override
     public void run(String[] args) throws Exception {
         String requestURL1 = "http://26-citrics-a-ds.eba-tjpigfip.us-east-1.elasticbeanstalk.com/rent_city_state";
         String requestURL2 = "http://26-citrics-a-ds.eba-tjpigfip.us-east-1.elasticbeanstalk.com/static/";
@@ -27,6 +38,7 @@ public class SeedData implements CommandLineRunner {
         List<String> dataArray = new ArrayList<String>();
 
         URL locURL = new URL(requestURL1);
+
 
         HttpURLConnection connection = (HttpURLConnection)locURL.openConnection();
         connection.setRequestMethod("GET");
@@ -107,8 +119,16 @@ public class SeedData implements CommandLineRunner {
                 JsonNode annualNode = dataNode.path("annual_wage");
                 JsonNode climateNode = dataNode.path("climate_zone");
                 JsonNode simpleClimate = dataNode.path("simple_climate");
+//                       public City(String name, String state, int studio, int onebr, int twobr, int threebr
+//                       , int fourbr, String occ_title, Double hourly_wage, int annual_wage, String climate_zone, String simple_climate, float walkscore, int population,
+//                       List<CityOccs> occupations, Set<UserCities> users) {
 
-                // Insert code on how you'd want to store this data to table. For now, I will use println
+                 City newCity = new City(cityName.textValue(),stateCode.textValue(),studioNode.intValue(),oneBNode.intValue(),twoBNode.intValue(),threeBNode.intValue(),fourBNode.intValue(),occNode.textValue(),hourlyNode.doubleValue(),annualNode.intValue(),climateNode.textValue(),simpleClimate.textValue(),walkNode.floatValue(),popNode.intValue());
+//                System.out.println(newCity.getName());
+                 cityService.save(newCity);
+
+
+                    // Insert code on how you'd want to store this data to table. For now, I will use println
                 // Uncomment next line to display data for specified cities/states (Note: Apparently, not all cities in API have data)
                 // System.out.println(cityName.textValue() + ", " + stateCode.textValue() + ", Studio: " + studioNode.intValue() + ", Walkability: " + walkNode.floatValue() + ", Population: " + popNode.intValue());
             }
