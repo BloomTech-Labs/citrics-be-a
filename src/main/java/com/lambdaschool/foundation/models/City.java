@@ -39,7 +39,7 @@ public class City extends Auditable
 
     private String occ_title;
 
-    private Double hourly_wage;
+    private double hourly_wage;
 
     private int annual_wage;
 
@@ -47,7 +47,7 @@ public class City extends Auditable
 
     private String simple_climate;
 
-    private float walkscore;
+    private double walkscore;
 
     private int population;
 
@@ -69,7 +69,7 @@ public class City extends Auditable
     {
     }
 
-    public City(String name, String state, int studio, int onebr, int twobr, int threebr, int fourbr, String occ_title, Double hourly_wage, int annual_wage, String climate_zone, String simple_climate, float walkscore, int population) {
+    public City(String name, String state, int studio, int onebr, int twobr, int threebr, int fourbr, String occ_title, double hourly_wage, int annual_wage, String climate_zone, String simple_climate, double walkscore, int population) {
         this.name = name;
         this.state = state;
         this.studio = studio;
@@ -207,7 +207,7 @@ public class City extends Auditable
         this.occupations = occupations;
     }
 
-    public float getWalkscore() {
+    public Double getWalkscore() {
         return walkscore;
     }
 
