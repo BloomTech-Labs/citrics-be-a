@@ -75,6 +75,8 @@ public interface UserService
         User user,
         long id);
 
+    void addFav(String cityName, User user);
+
     /**
      * Deletes all record and their associated records from the database
      */
