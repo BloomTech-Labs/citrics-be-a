@@ -47,5 +47,19 @@ public class CityOccs extends Auditable implements Serializable {
         this.occupation = occupation;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(!(o instanceof CityOccs)) return false;
 
+        CityOccs that = (CityOccs) o;
+
+        return ((city == null) ? 0 : city.getCityid()) == ((that.city == null) ? 0 : that.city.getCityid()) &&
+                ((occupation == null) ? 0 : occupation.getOccid()) == ((that.occupation == null) ? 0 : that.occupation.getOccid());
+    }
+
+    @Override
+    public int hashCode() {
+        return 37;
+    }
 }
