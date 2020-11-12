@@ -44,6 +44,8 @@ public class SeedData implements CommandLineRunner {
         // List<String> fetchArray = new ArrayList<String>(); // no longer needed. Used with requestURL1
         List<String> dataArray = new ArrayList<String>();
         List<String> occsArray = new ArrayList<String>();
+        List<City> cityArray = new ArrayList<City>();
+        List<Occupation> jobsList = new ArrayList<Occupation>();
 
         // The integer below is just for output messaging
         int count = 0;
@@ -127,7 +129,7 @@ public class SeedData implements CommandLineRunner {
                 if(count % 27 == 0) System.out.println((int)(count * 100 / 270) + "%");
 
                 // End of BufferedReader, check size
-                // System.out.println(cityNode.textValue() + ", " + stateNode.textValue() + " data: " + dataArray.size());
+                // System.out.println("data: " + dataArray.size());
             } else {
                 // System.out.println(cityNode.textValue() + ", " + stateNode.textValue() + " returned an error, likely a 404");
             }
@@ -145,9 +147,11 @@ public class SeedData implements CommandLineRunner {
                 // Page intentionally left blank
             }
 
-            for(String data2 : dataArray) {
+            for(int i = 0; i < dataArray.size(); i++) { // for(String data2 : dataArray)
+                // This only loops through once, but leaving the for-loop just in case of errors
+
                 ObjectMapper dataMap = new ObjectMapper();
-                JsonNode dataNode = dataMap.readTree(data2);
+                JsonNode dataNode = dataMap.readTree(dataArray.get(i));
 
                 JsonNode cityName = dataNode.path("city");
                 JsonNode stateCode = dataNode.path("state");
@@ -167,24 +171,26 @@ public class SeedData implements CommandLineRunner {
                 // List<CityOccs> occupations, Set<UserCities> users) {
 
                 City newCity = new City(cityName.textValue(),stateCode.textValue(),studioNode.intValue(),oneBNode.intValue(),twoBNode.intValue(),threeBNode.intValue(),fourBNode.intValue(),occNode.textValue(),hourlyNode.doubleValue(),annualNode.intValue(),climateNode.textValue(),simpleClimate.textValue(),walkNode.doubleValue(),popNode.intValue());
+                
+                for(int x = 0; x < occsArray.size(); x++) {
+                    ObjectMapper occsMap = new ObjectMapper();
+                    JsonNode occsNode = occsMap.readTree(occsArray.get(x));
+
+                    JsonNode cityArea = occsNode.path("city"); // Not used
+                    JsonNode stateArea = occsNode.path("state"); // Not used
+                    JsonNode occTitle = occsNode.path("occ_title");
+                    JsonNode jobsCapita = occsNode.path("jobs_1000");
+                    JsonNode locQtnt = occsNode.path("loc_quotient");
+                    JsonNode hourlyWage = occsNode.path("hourly_wage");
+                    JsonNode annualWage = occsNode.path("annual_wage");
+
+                    Occupation newOccupation = new Occupation(occTitle.textValue(), hourlyWage.doubleValue(), annualWage.intValue(), jobsCapita.doubleValue(), locQtnt.doubleValue());
+                    occupationService.save(newOccupation);
+                    newCity.getOccupations().add(new CityOccs(newCity, newOccupation));
+                }
                 cityService.save(newCity);
             }
 
-            for(String occsData : occsArray) {
-                ObjectMapper occsMap = new ObjectMapper();
-                JsonNode occsNode = occsMap.readTree(occsData);
-
-                JsonNode cityArea = occsNode.path("city"); // Not used
-                JsonNode stateArea = occsNode.path("state"); // Not used
-                JsonNode occTitle = occsNode.path("occ_title");
-                JsonNode jobsCapita = occsNode.path("jobs_1000");
-                JsonNode locQtnt = occsNode.path("loc_quotient");
-                JsonNode hourlyWage = occsNode.path("hourly_wage");
-                JsonNode annualWage = occsNode.path("annual_wage");
-
-                Occupation newOccupation = new Occupation(occTitle.textValue(), hourlyWage.doubleValue(), annualWage.intValue(), jobsCapita.doubleValue(), locQtnt.doubleValue());
-                occupationService.save(newOccupation);
-            }
             dataArray.clear();
             occsArray.clear();
         }
