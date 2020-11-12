@@ -59,8 +59,12 @@ public class City extends Auditable
      * List of User's who have favorited the city
      */
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonIgnoreProperties()
     private Set<UserCities> users = new HashSet<>();
+
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(value = "city", allowSetters = true)
+    private List<CitySearches> searches = new ArrayList<>();
 
     /**
      * The Default constructor needed by JPA
@@ -205,6 +209,14 @@ public class City extends Auditable
 
     public void setOccupations(List<CityOccs> occupations) {
         this.occupations = occupations;
+    }
+
+    public List<CitySearches> getSearches() {
+        return searches;
+    }
+
+    public void setSearches(List<CitySearches> searches) {
+        this.searches = searches;
     }
 
     public Double getWalkscore() {

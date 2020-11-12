@@ -38,6 +38,10 @@ public class User
     @JsonIgnoreProperties(value = "user", allowSetters = true)
     private List<UserCities> favcities = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(value = "user", allowSetters = true)
+    private List<Search> searches = new ArrayList<>();
+
     private int categories;
 
 
@@ -117,6 +121,14 @@ public class User
     public void setFavcities(List<UserCities> favCities)
     {
         this.favcities = favCities;
+    }
+
+    public List<Search> getSearches() {
+        return searches;
+    }
+
+    public void setSearches(List<Search> searches) {
+        this.searches = searches;
     }
 
     /*
