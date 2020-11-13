@@ -83,10 +83,9 @@ public class UserController
             HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/{userid}/fav", consumes = "application/json")
+    @PostMapping(value = "/{userid}/fav/{cityName}", consumes = "application/json")
     public ResponseEntity<?> updateFavs(
-        @Valid
-        @RequestBody
+        @PathVariable
             String cityName,
         @PathVariable
             long userid
