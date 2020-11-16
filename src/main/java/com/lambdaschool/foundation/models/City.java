@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "cities")
-@JsonIgnoreProperties(value = "users")
+// @JsonIgnoreProperties(value = "users")
 public class City extends Auditable
 {
     @Id
@@ -54,7 +54,8 @@ public class City extends Auditable
      * List of User's who have favorited the city
      */
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties(value = "city", allowSetters = true)
+
+    @JsonIgnoreProperties()
     private Set<UserCities> users = new HashSet<>();
 
 //    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)

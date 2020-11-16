@@ -1,6 +1,6 @@
 package com.lambdaschool.foundation.services;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import com.lambdaschool.foundation.exceptions.ResourceNotFoundException;
 import com.lambdaschool.foundation.models.City;
 import com.lambdaschool.foundation.models.User;

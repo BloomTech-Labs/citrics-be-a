@@ -132,10 +132,12 @@ public class UserServiceImpl
 
     @Override
     public void addFav(String cityName, User user){
-//        City city = cityService.findByName(cityName);
-//        UserCities uc = new UserCities(user, city);
-//        user.getFavcities().add(uc);
-//        city.getUsers().add(uc);
+
+        City city = cityService.findByName(cityName);
+        UserCities uc = new UserCities(user, city);
+        user.getFavcities().add(uc);
+        city.getUsers().add(uc);
+
     }
 
     @Transactional
