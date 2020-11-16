@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The entity allowing interaction with the users table
@@ -37,6 +35,10 @@ public class User
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value = "user", allowSetters = true)
     private List<UserCities> favcities = new ArrayList<>();
+
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonIgnoreProperties(value = "user", allowSetters = true)
+//    private List<Search> searches = new ArrayList<>();
 
     private int categories;
 
@@ -118,6 +120,14 @@ public class User
     {
         this.favcities = favCities;
     }
+
+//    public List<Search> getSearches() {
+//        return searches;
+//    }
+//
+//    public void setSearches(List<Search> searches) {
+//        this.searches = searches;
+//    }
 
     /*
     Making every user have their own list of categories

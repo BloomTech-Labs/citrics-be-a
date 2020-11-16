@@ -1,11 +1,9 @@
 package com.lambdaschool.foundation.models;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "cities")
+@JsonIgnoreProperties(value = "users")
 public class City extends Auditable
 {
     @Id
@@ -55,8 +54,12 @@ public class City extends Auditable
      * List of User's who have favorited the city
      */
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "city", allowSetters = true)
     private Set<UserCities> users = new HashSet<>();
+
+//    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonIgnoreProperties(value = "city", allowSetters = true)
+//    private List<CitySearches> searches = new ArrayList<>();
 
     /**
      * The Default constructor needed by JPA
@@ -81,6 +84,10 @@ public class City extends Auditable
         this.walkscore = walkscore;
         this.population = population;
 
+    }
+
+    public City(String testing) {
+        this.name = testing;
     }
 
 
@@ -203,6 +210,14 @@ public class City extends Auditable
     public void setOccupations(List<CityOccs> occupations) {
         this.occupations = occupations;
     }
+
+//    public List<CitySearches> getSearches() {
+//        return searches;
+//    }
+//
+//    public void setSearches(List<CitySearches> searches) {
+//        this.searches = searches;
+//    }
 
     public Double getWalkscore() {
         return walkscore;

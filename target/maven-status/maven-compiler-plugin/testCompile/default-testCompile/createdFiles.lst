@@ -1,6 +1,4 @@
-com\lambdaschool\foundation\controllers\CityControllerTest.class
 com\lambdaschool\foundation\controllers\UserControllerTest.class
 com\lambdaschool\foundation\services\UserServiceImplTest.class
 com\lambdaschool\foundation\FoundationApplication.class
 com\lambdaschool\foundation\SeedData.class
-com\lambdaschool\foundation\services\CityServiceImplTest.class

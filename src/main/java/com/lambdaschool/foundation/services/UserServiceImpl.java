@@ -1,7 +1,9 @@
 package com.lambdaschool.foundation.services;
 
 import com.lambdaschool.foundation.exceptions.ResourceNotFoundException;
+import com.lambdaschool.foundation.models.City;
 import com.lambdaschool.foundation.models.User;
+import com.lambdaschool.foundation.models.UserCities;
 import com.lambdaschool.foundation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,9 @@ public class UserServiceImpl
 
     @Autowired
     private HelperFunctions helperFunctions;
+
+    @Autowired
+    private CityService cityService;
 
     @Override
     public User findUserById(long id) throws
@@ -123,6 +128,14 @@ public class UserServiceImpl
             // to recognize that this exception can be thrown
             throw new ResourceNotFoundException("This user is not authorized to make change");
         }
+    }
+
+    @Override
+    public void addFav(String cityName, User user){
+//        City city = cityService.findByName(cityName);
+//        UserCities uc = new UserCities(user, city);
+//        user.getFavcities().add(uc);
+//        city.getUsers().add(uc);
     }
 
     @Transactional
