@@ -11,12 +11,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "cities")
+// @JsonIgnoreProperties(value = "users")
 public class City extends Auditable
 {
-
-    /**
-     * Generate City id
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cityid;
@@ -57,6 +54,7 @@ public class City extends Auditable
      * List of User's who have favorited the city
      */
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+
     @JsonIgnoreProperties()
     private Set<UserCities> users = new HashSet<>();
 
@@ -88,6 +86,11 @@ public class City extends Auditable
         this.population = population;
 
     }
+
+    public City(String testing) {
+        this.name = testing;
+    }
+
 
     public String getName() {
         return name;
