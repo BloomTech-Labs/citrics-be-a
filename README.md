@@ -88,37 +88,32 @@ See [Data Science Documentation](https://github.com/Lambda-School-Labs/Labs27-C-
 [Architecture Diagram](https://whimsical.com/4UKop3aqMB3KJRG2LXZzM6)
 
 Tables
-![backend-image](citrics-new-be.png)
+![backend-image](citrics-db-layout.png)
 
 ## Cities CRUD
 
 Method | Endpoint | Description | Required Data
 --- | --- | --- | ---
-POST | /cities/fav/:cityid | Adds city to Users fav cities | `username`
-GET | /cities/all | List all cities |
-GET | /cities/city/:cityid | Get details for a city by it's ID |
-GET | /cities/allid | List of all city names and their ID's |
-GET | /cities/avg | Returns data for the city name: "National Average, USA" |
+GET | /cities/all | List of city/state objects |
+GET | /cities/city/:cityid | Get city by it's ID |
+GET | /cities/all-long | Caution: should never hit this endpoint. Gets list of entire database city objects |
+GET | /cities/avg | Get entire DB dataset Average of all cities |
+GET | /cities/filter | Returns list of city names providing filter object | input: `{population?: {min, max}, studio? : {min, max}, onebr -> fourbr?: {min, max}, hourly_wage?: {min, max}, annual_wage?: {min, max}, walkscore?: {min, max}}`
+GET | /cities/compare | Provides a list of city names and returns all list of all given cities data. Validates user and adds to searches |
 
 ## Users CRUD
 
 Method | Endpoint | Description | Required Data
 --- | --- | --- | ---
 POST | /users/user | Add a new User | `User {username}`
-POST | /users/:userid/searches | Adds search info to Users history | array of Strings
-GET | /users/users | List all Users |
-GET | /users/:userid | Find User by ID |
-GET | /users/user/name/:username | Find User by username |
-GET | /users/user/name/like/:username | Finds all Users with substring in username |
+POST | /users/:userid/fav/:cityName | 
+POST | /users/:userid/fav | Adds/Removes favcity from user data | `cityname`
+POST | /users/:userid/update-preferences | Updates category preferences | input: `{studio, onebr, twobr, threebr, fourbr, hourly_wage, annual_wage, walkscore}`
+GET | /users/:userid | Gets user data by ID |
 GET | /users/getuserinfo | Returns User by Authentication |
 GET | /users/favs | List current User's favorite cities |
-GET | /users/:userid/favcities | Get User's favorite cities |
-GET | /users/:userid/getsearches | List User's recent searches |
-GET | /users/:userid/getcategories | List User's Categories |
 PUT | /users/user/:userid | Update full User | `User`
 PATCH | /users/user/:userid | Update specific field in User | `username`
-PATCH | /users/:userid/category | Update specific category in User | pointer index
 DELETE | /users/user/:userid | Delete User by ID |
-DELETE | /users/:userid/removefavorites/:cityid | Deletes a city from User's favorites |
 
 

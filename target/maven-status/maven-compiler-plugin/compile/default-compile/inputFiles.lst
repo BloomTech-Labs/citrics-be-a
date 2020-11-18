@@ -9,6 +9,7 @@ E:\Labs\citrics-be-a\src\main\java\com\lambdaschool\foundation\services\Category
 E:\Labs\citrics-be-a\src\main\java\com\lambdaschool\foundation\services\OccupationServiceImpl.java
 E:\Labs\citrics-be-a\src\main\java\com\lambdaschool\foundation\handlers\RestExceptionHandler.java
 E:\Labs\citrics-be-a\src\main\java\com\lambdaschool\foundation\models\CityOccsId.java
+E:\Labs\citrics-be-a\src\main\java\com\lambdaschool\foundation\models\CitySearchesId.java
 E:\Labs\citrics-be-a\src\main\java\com\lambdaschool\foundation\services\CityService.java
 E:\Labs\citrics-be-a\src\main\java\com\lambdaschool\foundation\repository\UserCategoryRepository.java
 E:\Labs\citrics-be-a\src\main\java\com\lambdaschool\foundation\config\Swagger2Config.java
