@@ -1,17 +1,18 @@
 package com.lambdaschool.foundation.services;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.lambdaschool.foundation.exceptions.ResourceNotFoundException;
-import com.lambdaschool.foundation.models.*;
-import com.lambdaschool.foundation.repository.*;
+import com.lambdaschool.foundation.models.City;
+import com.lambdaschool.foundation.models.User;
+import com.lambdaschool.foundation.models.UserCities;
+import com.lambdaschool.foundation.repository.CityRepository;
+import com.lambdaschool.foundation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
-import java.util.Set;
 
 @Transactional
 @Service(value = "cityService")
@@ -68,29 +69,33 @@ public class CityServiceImpl implements CityService
     @Override
     public City save(City city)
     {
-//        City c = new City();
+        City c = new City();
 
-//        if (city.getCityid() != 0)
-//        {
-//            cityrepo.findById(city.getCityid())
-//                .orElseThrow(() -> new ResourceNotFoundException("City id " + city.getCityid() + " not found!"));
-//            c.setCityid(city.getCityid());
-//        }
-//
-//
-//        for (UserCities user : city.getUsers())
-//        {
-//            c.getUsers()
-//                .add(user);
-//
-//        }
+        if (city.getCityid() != 0)
+        {
+            cityrepo.findById(city.getCityid())
+                .orElseThrow(() -> new ResourceNotFoundException("City id " + city.getCityid() + " not found!"));
+            c.setCityid(city.getCityid());
+        }
+
+
+        for (UserCities user : city.getUsers())
+        {
+            c.getUsers()
+                .add(user);
+
+        }
 
         return cityrepo.save(city);
     }
 
     @Override
-    public City findByCName(String name) {
-        return null;
+    public City findByName(String name) {
+        City city = cityrepo.findByName(name);
+        if (city == null) {
+            throw new ResourceNotFoundException("city by name of " + name + " not found!");
+        }
+        return city;
     }
 
     /**
@@ -180,21 +185,6 @@ public class CityServiceImpl implements CityService
     @Override
     public City returnAverageCity()
     {
-        return findByCName("National Average, USA");
-    }
-
-    /**
-     * Saves the city by id to current users fav cities
-     * @param id cityid of city to be saved
-     * @param user user extracted by controller
-     */
-    @Override
-    public void saveFavCity(long id, User user)
-    {
-        City c = findCityById(id);
-        UserCities us = new UserCities(user, c);
-
-        user.getFavcities().add(us);
-        c.getUsers().add(us);
+        return findByName("average");
     }
 }

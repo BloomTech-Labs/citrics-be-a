@@ -15,7 +15,6 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The entry point for clients to access user data
@@ -30,24 +29,6 @@ public class UserController
     @Autowired
     private UserService userService;
 
-
-
-    /**
-     * Returns a list of all users
-     * <br>Example: <a href="http://localhost:2019/users/users">http://localhost:2019/users/users</a>
-     *
-     * @return JSON list of all users with a status of OK
-     * @see UserService#findAll() UserService.findAll()
-     */
-    @GetMapping(value = "/users",
-        produces = "application/json")
-    public ResponseEntity<?> listAllUsers()
-    {
-        List<User> myUsers = userService.findAll();
-        return new ResponseEntity<>(myUsers,
-            HttpStatus.OK);
-    }
-
     /**
      * Returns a single user based off a user id number
      * <br>Example: http://localhost:2019/users/user/7
@@ -56,51 +37,13 @@ public class UserController
      * @return JSON object of the user you seek
      * @see UserService#findUserById(long) UserService.findUserById(long)
      */
-    @GetMapping(value = "/user/{userId}",
+    @GetMapping(value = "/{userId}",
         produces = "application/json")
     public ResponseEntity<?> getUserById(
         @PathVariable
             Long userId)
     {
         User u = userService.findUserById(userId);
-        return new ResponseEntity<>(u,
-            HttpStatus.OK);
-    }
-
-    /**
-     * Return a user object based on a given username
-     * <br>Example: <a href="http://localhost:2019/users/user/name/cinnamon">http://localhost:2019/users/user/name/cinnamon</a>
-     *
-     * @param userName the name of user (String) you seek
-     * @return JSON object of the user you seek
-     * @see UserService#findByName(String) UserService.findByName(String)
-     */
-    @GetMapping(value = "/user/name/{userName}",
-        produces = "application/json")
-    public ResponseEntity<?> getUserByName(
-        @PathVariable
-            String userName)
-    {
-        User u = userService.findByName(userName);
-        return new ResponseEntity<>(u,
-            HttpStatus.OK);
-    }
-
-    /**
-     * Returns a list of users whose username contains the given substring
-     * <br>Example: <a href="http://localhost:2019/users/user/name/like/da">http://localhost:2019/users/user/name/like/da</a>
-     *
-     * @param userName Substring of the username for which you seek
-     * @return A JSON list of users you seek
-     * @see UserService#findByNameContaining(String) UserService.findByNameContaining(String)
-     */
-    @GetMapping(value = "/user/name/like/{userName}",
-        produces = "application/json")
-    public ResponseEntity<?> getUserLikeName(
-        @PathVariable
-            String userName)
-    {
-        List<User> u = userService.findByNameContaining(userName);
         return new ResponseEntity<>(u,
             HttpStatus.OK);
     }
@@ -138,6 +81,29 @@ public class UserController
         return new ResponseEntity<>(null,
             responseHeaders,
             HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/{userid}/fav/{cityName}", consumes = "application/json")
+    public ResponseEntity<?> updateFavs(
+        @PathVariable
+            String cityName,
+        @PathVariable
+            long userid
+    ){
+        User u = userService.findUserById(userid);
+        List<UserCities> favs = u.getFavcities();
+        for (int i = 0; i < favs.size(); i++){
+            if (favs.get(i).getCity().getName() == cityName){
+                // found city in user's favorites
+                favs.remove(i);
+                u.setFavcities(favs);
+                userService.save(u);
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+        }
+        // didnt find city in current favs, adding fav to list
+        userService.addFav(cityName, u);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**

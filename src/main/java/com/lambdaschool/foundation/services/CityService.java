@@ -1,10 +1,10 @@
 package com.lambdaschool.foundation.services;
 
 import com.lambdaschool.foundation.models.City;
-//import com.lambdaschool.foundation.models.CityIdName;
-import com.lambdaschool.foundation.models.User;
 
 import java.util.List;
+
+//import com.lambdaschool.foundation.models.CityIdName;
 
 public interface CityService
 {
@@ -40,7 +40,7 @@ public interface CityService
      * @param name citystatename
      * @return City object matching name
      */
-    City findByCName(String name);
+    City findByName(String name);
 
     /**
      * Finds all cities id's and citynamestate's
@@ -59,11 +59,4 @@ public interface CityService
      * @return
      */
     City returnAverageCity();
-
-    /**
-     * Saves city to current users fav cities list
-     * @param id cityid of city to be saved
-     * @param user user extracted by controller
-     */
-    void saveFavCity(long id, User user);
 }
