@@ -19,7 +19,7 @@ import java.util.List;
 public class CityController
 {
     /**
-     * Conenction to city services
+     * Connection to city services
      */
     @Autowired
     private CityService cityService;
@@ -28,7 +28,7 @@ public class CityController
     private UserService userService;
 
     /**
-     *  /all endpont (Not enough memory in free tier of
+     *  /all endpoint (Not enough memory in free tier of
      *  Heroku to use with fully populated DB. Disabled until
      *  resources are available)
      * @return list of all cities

@@ -4,6 +4,7 @@ com\lambdaschool\foundation\repository\CityOccsRepository.class
 com\lambdaschool\foundation\SeedData.class
 com\lambdaschool\foundation\services\UserService.class
 com\lambdaschool\foundation\config\SwaggerWebMVC.class
+com\lambdaschool\foundation\models\CitySearchesId.class
 com\lambdaschool\foundation\exceptions\CustomErrorDetails.class
 com\lambdaschool\foundation\exceptions\ResourceFoundException.class
 com\lambdaschool\foundation\models\Auditable.class
